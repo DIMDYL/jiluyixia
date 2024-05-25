@@ -1,0 +1,129 @@
+<script setup>
+import { useScroll } from '@vueuse/core'
+import { navurlstore } from '@/stores/navinfo.js'
+const navurl = navurlstore()
+const { y } = useScroll(window)
+navurl.updateurl(location.pathname)
+const handleSelect = (key) => {
+  navurl.updateurl(key)
+}
+import { ref } from 'vue'
+const drawer = ref(false)
+const direction = ref('ltr')
+</script>
+<template>
+  <!-- :class="{ show: y >= 277 }" -->
+  <div class="nav" :class="{ show: y >= 277 }">
+    <a class="logo" href="/">
+      <h3>记录一下</h3>
+      <p>记录平凡的每一天</p>
+    </a>
+    <div class="mini" @click="drawer = true">三</div>
+    <div class="navlist">
+      <el-menu
+        :default-active="navurl.url"
+        @select="handleSelect"
+        class="el-menu-demo"
+        mode="horizontal"
+        background-color="transparent"
+        text-color="#fff"
+        :ellipsis="false"
+        active-text-color="#ffd04b"
+        router
+      >
+        <el-menu-item index="/">首页</el-menu-item>
+        <el-menu-item index="/user">用户中心</el-menu-item>
+      </el-menu>
+    </div>
+    <a class="userinfo" href="/user">
+      <el-avatar
+        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+      />
+      <!-- <p>GEM</p> -->
+    </a>
+  </div>
+  <el-drawer
+    v-model="drawer"
+    size="200px"
+    :with-header="false"
+    :lock-scroll="false"
+    append-to-body="true"
+    :direction="direction"
+  >
+    <div class="title">
+      <p>记录一下</p>
+      <h3 @click="drawer = false">三</h3>
+    </div>
+  </el-drawer>
+</template>
+<style lang="less" scoped>
+.nav {
+  width: 100%;
+  height: 77px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 27;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 77px;
+  align-items: center;
+  transition: 0.5s all;
+  .mini {
+    cursor: pointer;
+    display: none;
+  }
+  .logo {
+    display: block;
+    cursor: pointer;
+    color: #ffd04b;
+    p {
+      font-size: 14px;
+    }
+  }
+  .userinfo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    p {
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+  }
+  a {
+    padding: 0 10px;
+    color: white;
+    text-decoration: none;
+    &:hover {
+      color: rgb(211, 211, 211);
+    }
+  }
+}
+.show {
+  height: 55px;
+  background-color: rgba(0, 0, 0, 0.463);
+  box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.463);
+  font-weight: 800 !important;
+  // border-bottom: 5px solid #ffcf4b5b;
+  border-radius: 0 0 77px 77px;
+  box-sizing: border-box;
+}
+.el-menu--horizontal.el-menu,
+.el-menu--horizontal > .el-menu-item.is-active,
+.el-menu--horizontal > .el-menu-item {
+  border-bottom: none !important;
+}
+.el-menu {
+  --el-menu-hover-bg-color: transparent !important;
+}
+.el-menu-item:hover {
+  color: #ffd04b !important;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  h3 {
+    cursor: pointer;
+  }
+}
+</style>
