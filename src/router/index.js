@@ -1,8 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import index from '@/views/index/index.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: []
+  routes: [
+    {
+      path: '/',
+      name: 'index',
+      meta: { title: '首页' },
+      component: index,
+      children: [
+        {
+          path: '/',
+          meta: { title: '首页' },
+          component: () => import('@/views/daily/index.vue')
+        }
+      ]
+    },
+    {
+      path: '/user',
+      meta: { title: '用户中心' },
+      component: () => import('@/views/userhome/index.vue')
+    }
+  ]
 })
-
+router.afterEach((to) => {
+  document.title = `${to.meta.title || ''} - MeAndGEM `
+  const contentContainer = document.querySelector('.main')
+  if (contentContainer) {
+    contentContainer.scrollTop = 0
+  } else {
+    // 如果没有找到特定容器，则尝试滚动整个窗口
+    window.scrollTo(0, 0)
+  }
+})
 export default router

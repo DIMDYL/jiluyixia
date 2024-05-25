@@ -1,15 +1,19 @@
 import './assets/base.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-const pinia = createPinia()
 import App from './App.vue'
 import router from './router'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-const app = createApp(App)
+const pinia = createPinia()
+// 注册插件
 pinia.use(piniaPluginPersistedstate)
-app.use(createPinia())
+
+const app = createApp(App)
+// 使用 pinia 实例，而不是再次调用 createPinia()
+app.use(pinia)
 app.use(router)
-app.use(app)
+
+// 移除 app.use(app)，这是不必要的
 
 app.mount('#app')
