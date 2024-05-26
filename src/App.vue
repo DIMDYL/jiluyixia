@@ -33,7 +33,7 @@
   .article .rightarticle {
     width: 80% !important;
     .img {
-      width: 100px !important;
+      width: 227px !important;
     }
     .word {
       p {
@@ -74,9 +74,9 @@
   }
   .article .leftarticle,
   .article .rightarticle {
-    width: 80% !important;
+    width: 90% !important;
     .img {
-      width: 100px !important;
+      width: 200px !important;
     }
     .word {
       p {
@@ -133,8 +133,7 @@
   .article .rightarticle {
     width: 95% !important;
     .img {
-      width: 100px !important;
-      height: 150px !important;
+      width: 127px !important;
     }
     .word {
       p {

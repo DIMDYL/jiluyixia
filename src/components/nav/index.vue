@@ -12,7 +12,6 @@ const drawer = ref(false)
 const direction = ref('ltr')
 </script>
 <template>
-  <!-- :class="{ show: y >= 277 }" -->
   <div class="nav" :class="{ show: y >= 277 }">
     <a class="logo" href="/">
       <h3>记录一下</h3>

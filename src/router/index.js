@@ -6,7 +6,6 @@ const router = createRouter({
     {
       path: '/',
       name: 'index',
-      meta: { title: '首页' },
       component: index,
       children: [
         {
@@ -19,12 +18,12 @@ const router = createRouter({
     {
       path: '/user',
       meta: { title: '用户中心' },
-      component: () => import('@/views/userhome/index.vue')
+      component: () => import('@/views/user/index.vue')
     }
   ]
 })
 router.afterEach((to) => {
-  document.title = `${to.meta.title || ''} - MeAndGEM `
+  document.title = `${to.meta.title || ''} - 记录一下`
   const contentContainer = document.querySelector('.main')
   if (contentContainer) {
     contentContainer.scrollTop = 0

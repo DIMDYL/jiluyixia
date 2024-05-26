@@ -1,11 +1,11 @@
 <script setup>
-import indexNav from '@/components/nav/indexNav.vue'
-import userhomeStory from './userhomeStory.vue'
+// import indexNav from '@/components/nav/indexNav.vue'
+import userPanel from './userPanel.vue'
 </script>
 <template>
   <div class="user">
-    <indexNav />
-    <userhomeStory />
+    <!-- <indexNav /> -->
+    <userPanel />
   </div>
 </template>
 <style lang="less" scoped>

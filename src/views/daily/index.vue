@@ -1,11 +1,11 @@
 <script setup>
 import indexTop from './indexTop.vue'
-import story from '@/components/article/index.vue'
+import articleComponents from '@/components/article/index.vue'
 </script>
 <template>
   <div class="daily">
     <indexTop />
-    <story></story>
+    <articleComponents :isuserHome="false" />
   </div>
 </template>
 <style lang="less" scoped>
@@ -14,6 +14,6 @@ import story from '@/components/article/index.vue'
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 0 77px 0;
+  // padding: 0 0 77px 0;
 }
 </style>

@@ -1,3 +1,14 @@
+<script setup>
+import { ref } from 'vue'
+const count = ref(0)
+const load = () => {
+  count.value += 1
+  console.log(count.value)
+}
+defineProps({
+  isuserHome: Boolean
+})
+</script>
 <template>
   <div class="article">
     <p
@@ -10,19 +21,21 @@
     >
       《 和 解 解 的 故 事 》
     </p>
-    <div class="articlebox">
+    <div class="articlebox" v-infinite-scroll="load">
       <div class="leftarticle">
-        <div class="img"></div>
+        <img
+          class="img"
+          src="@/assets/001RqsRzly1hq2alvdlf2j61900u0wlm02.jpg"
+        />
         <div class="word">
           <h1 style="" class="right-title">2024年8月16日</h1>
           <p>
-            :class的:class的使用及通过:class实现标签切换状态改变
-            使用及通过:class实现标签切换状态:class的使用及通过:class实现标签切换状态改变
-            改变
+            特别开心的一个晚上！好久都没有这么这么开心了！终于见到了耳机里的解解，每一首歌都听了好多好多遍，现场稳的吓人！又飒又可爱哎呦我真的
           </p>
-          <div class="bottom">
-            <a class="look">查看详情 ></a>
-            <slot></slot>
+          <div class="leftoperation">
+            <a v-if="isuserHome">删除</a>
+            <a v-if="isuserHome">编辑</a>
+            <a>查看详情 ></a>
           </div>
         </div>
       </div>
@@ -30,16 +43,19 @@
         <div class="word">
           <h1 style="" class="left-title">2024年8月16日</h1>
           <p>
-            这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容
-            这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容
-            这是一篇测试内容这是一篇测试内容这是一篇测试内容这是一篇测试内容
+            特别开心的一个晚上！好久都没有这么这么开心了！终于见到了耳机里的解解，每一首歌都听了好多好多遍，现场稳的吓人！又飒又可爱哎呦我真的特别开心的一个晚上！好久都没有这么这么开心了！终于见到了耳机里的解解，每一首歌都听了好多好多遍，现场稳的吓人！又飒又可爱哎呦我真的特别开心的一个晚上！好久都没有这么这么开心了！终于见到了耳机里的解解，每一首歌都听了好多好多遍，现场稳的吓人！又飒又可爱哎呦我真的
           </p>
-          <div class="bottom">
-            <a class="look" style="text-align: left">查看详情 ></a>
+          <div class="rightoperation">
+            <a v-if="isuserHome">删除</a>
+            <a v-if="isuserHome">编辑</a>
+            <a>查看详情 ></a>
             <slot></slot>
           </div>
         </div>
-        <div class="img"></div>
+        <img
+          class="img"
+          src="@/assets/001RqsRzly1hq2alsd0lfj60u01900ya02.jpg"
+        />
       </div>
     </div>
   </div>
@@ -50,7 +66,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   box-sizing: border-box;
   .articlebox {
     width: 100%;
@@ -61,17 +76,17 @@
     align-items: center;
     .leftarticle {
       .img {
-        // transform: rotate(-7deg);
+        // transform: rotate(7deg);
       }
     }
     .rightarticle {
       .img {
-        // transform: rotate(7deg);
+        // transform: rotate(-7deg);
       }
     }
     .leftarticle,
     .rightarticle {
-      width: 1000px;
+      width: 777px;
       min-height: 100px;
       // margin: 20px 0;
       // height: 300px;
@@ -79,9 +94,8 @@
       align-items: center;
       .img {
         width: 300px;
-        height: 400px;
-        background-color: rgb(85, 21, 21);
         margin: 0 20px;
+        border-radius: 20px;
       }
       .word {
         flex: 1;
@@ -95,15 +109,21 @@
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 7;
         }
-        .bottom {
+        .leftoperation,
+        .rightoperation {
           color: #ffd04b;
           text-align: right;
           display: flex;
-          flex-direction: column;
           a {
-            padding: 10px 0;
+            padding: 10px;
             cursor: pointer !important;
           }
+        }
+        .leftoperation {
+          justify-content: end;
+        }
+        .rightoperation {
+          justify-content: start;
         }
       }
     }
