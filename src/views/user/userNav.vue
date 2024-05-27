@@ -53,7 +53,7 @@ const direction = ref('ltr')
         <el-icon><Notebook /></el-icon>
         <span>日常</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="/essay">
         <el-icon><Tickets /></el-icon>
         <span>随笔</span>
       </el-menu-item>

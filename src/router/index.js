@@ -23,6 +23,11 @@ const router = createRouter({
           path: '/user',
           meta: { title: '我的日常' },
           component: () => import('@/views/user/daily/index.vue')
+        },
+        {
+          path: '/essay',
+          meta: { title: '随笔' },
+          component: () => import('@/views/user/essay/index.vue')
         }
       ]
     }
