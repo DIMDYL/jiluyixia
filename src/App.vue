@@ -106,7 +106,7 @@
 
 /*在小于 480 像素的屏幕，微小屏幕，更低分辨率的手机*/
 @media (max-width: 479px) {
-  .navuser{
+  .navuser {
     display: none !important;
   }
   .leftarticle,
