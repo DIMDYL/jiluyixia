@@ -1,15 +1,19 @@
 <script setup>
-// import indexNav from '@/components/nav/indexNav.vue'
-import userPanel from './userPanel.vue'
+import userNav from './userNav.vue'
 </script>
 <template>
   <div class="user">
-    <!-- <indexNav /> -->
-    <userPanel />
+    <userNav />
+    <div class="content">
+      <RouterView />
+    </div>
   </div>
 </template>
 <style lang="less" scoped>
 .user {
   width: 100%;
+  .content {
+    margin-top: 77px;
+  }
 }
 </style>

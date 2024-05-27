@@ -106,6 +106,19 @@
 
 /*在小于 480 像素的屏幕，微小屏幕，更低分辨率的手机*/
 @media (max-width: 479px) {
+  .navuser{
+    display: none !important;
+  }
+  .leftarticle,
+  .rightarticle {
+    flex-wrap: wrap;
+    .img {
+      width: 100% !important;
+    }
+  }
+  .rightarticle {
+    flex-direction: column-reverse;
+  }
   .nav {
     justify-content: space-between !important;
     padding: 0 10px !important;
@@ -133,7 +146,7 @@
   .article .rightarticle {
     width: 95% !important;
     .img {
-      width: 127px !important;
+      /* width: 127px !important; */
     }
     .word {
       p {

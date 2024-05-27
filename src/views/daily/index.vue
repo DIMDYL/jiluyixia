@@ -5,7 +5,11 @@ import articleComponents from '@/components/article/index.vue'
 <template>
   <div class="daily">
     <indexTop />
-    <articleComponents :isuserHome="false" />
+    <articleComponents
+      boxwidth="1000px"
+      title="《 日常 》"
+      :isuserHome="false"
+    />
   </div>
 </template>
 <style lang="less" scoped>
@@ -14,6 +18,5 @@ import articleComponents from '@/components/article/index.vue'
   display: flex;
   flex-direction: column;
   align-items: center;
-  // padding: 0 0 77px 0;
 }
 </style>

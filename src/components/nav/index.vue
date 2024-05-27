@@ -12,12 +12,14 @@ const drawer = ref(false)
 const direction = ref('ltr')
 </script>
 <template>
-  <div class="nav" :class="{ show: y >= 277 }">
+  <div class="nav" :class="{ show: y >= 88 }">
     <a class="logo" href="/">
       <h3>记录一下</h3>
       <p>记录平凡的每一天</p>
     </a>
-    <div class="mini" @click="drawer = true">三</div>
+    <div class="mini" @click="drawer = true">
+      <el-icon :size="30"><Expand /></el-icon>
+    </div>
     <div class="navlist">
       <el-menu
         :default-active="navurl.url"
@@ -51,7 +53,9 @@ const direction = ref('ltr')
   >
     <div class="title">
       <p>记录一下</p>
-      <h3 @click="drawer = false">三</h3>
+      <h3 @click="drawer = false">
+        <el-icon :size="30"><Fold /></el-icon>
+      </h3>
     </div>
   </el-drawer>
 </template>
@@ -100,11 +104,12 @@ const direction = ref('ltr')
 }
 .show {
   height: 55px;
-  background-color: rgba(0, 0, 0, 0.463);
-  box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.463);
+  background-color: rgba(0, 0, 0, 0.553);
+  border-bottom: 3px solid #ffcf4b90;
+  // box-shadow: 2px 2px 10px 5px rgba(64, 63, 63, 0.482);
   font-weight: 800 !important;
   // border-bottom: 5px solid #ffcf4b5b;
-  border-radius: 0 0 77px 77px;
+  border-radius: 0 0 30px 30px;
   box-sizing: border-box;
 }
 .el-menu--horizontal.el-menu,

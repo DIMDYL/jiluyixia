@@ -6,7 +6,9 @@ const load = () => {
   console.log(count.value)
 }
 defineProps({
-  isuserHome: Boolean
+  isuserHome: Boolean,
+  boxwidth: String,
+  title: String
 })
 </script>
 <template>
@@ -19,18 +21,18 @@ defineProps({
         box-sizing: border-box;
       "
     >
-      《 和 解 解 的 故 事 》
+      {{ title }}
     </p>
     <div class="articlebox" v-infinite-scroll="load">
-      <div class="leftarticle">
-        <img
-          class="img"
-          src="@/assets/001RqsRzly1hq2alvdlf2j61900u0wlm02.jpg"
-        />
-        <div class="word">
+      <div class="leftarticle" :style="{ width: boxwidth }">
+        <div class="img">
+          <img src="@/assets/001RqsRzly1hq2alvdlf2j61900u0wlm02.jpg" />
+        </div>
+        <div class="word" style="padding-left: 7px">
           <h1 style="" class="right-title">2024年8月16日</h1>
           <p>
-            特别开心的一个晚上！好久都没有这么这么开心了！终于见到了耳机里的解解，每一首歌都听了好多好多遍，现场稳的吓人！又飒又可爱哎呦我真的
+            测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章
+            测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章
           </p>
           <div class="leftoperation">
             <a v-if="isuserHome">删除</a>
@@ -39,23 +41,21 @@ defineProps({
           </div>
         </div>
       </div>
-      <div class="rightarticle">
-        <div class="word">
+      <div class="rightarticle" :style="{ width: boxwidth }">
+        <div class="word" style="padding-right: 7px">
           <h1 style="" class="left-title">2024年8月16日</h1>
           <p>
-            特别开心的一个晚上！好久都没有这么这么开心了！终于见到了耳机里的解解，每一首歌都听了好多好多遍，现场稳的吓人！又飒又可爱哎呦我真的特别开心的一个晚上！好久都没有这么这么开心了！终于见到了耳机里的解解，每一首歌都听了好多好多遍，现场稳的吓人！又飒又可爱哎呦我真的特别开心的一个晚上！好久都没有这么这么开心了！终于见到了耳机里的解解，每一首歌都听了好多好多遍，现场稳的吓人！又飒又可爱哎呦我真的
+            测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章测试测试测试测试文章文章文章文章
           </p>
           <div class="rightoperation">
             <a v-if="isuserHome">删除</a>
             <a v-if="isuserHome">编辑</a>
             <a>查看详情 ></a>
-            <slot></slot>
           </div>
         </div>
-        <img
-          class="img"
-          src="@/assets/001RqsRzly1hq2alsd0lfj60u01900ya02.jpg"
-        />
+        <div class="img">
+          <img src="@/assets/001RqsRzly1hq2alsd0lfj60u01900ya02.jpg" />
+        </div>
       </div>
     </div>
   </div>
@@ -67,6 +67,7 @@ defineProps({
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  padding: 10px;
   .articlebox {
     width: 100%;
     background-color: black;
@@ -86,16 +87,21 @@ defineProps({
     }
     .leftarticle,
     .rightarticle {
-      width: 777px;
+      // width: 777px;
       min-height: 100px;
-      // margin: 20px 0;
+      margin: 27px 0;
       // height: 300px;
       display: flex;
       align-items: center;
+      padding: 5px;
+      box-sizing: border-box;
       .img {
         width: 300px;
-        margin: 0 20px;
+        // margin: 0 20px;
         border-radius: 20px;
+        img {
+          width: 100%;
+        }
       }
       .word {
         flex: 1;
