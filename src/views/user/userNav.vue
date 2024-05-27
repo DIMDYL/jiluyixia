@@ -17,9 +17,7 @@ const direction = ref('ltr')
     </div>
     <div class="title">后台管理</div>
     <a class="userinfo" href="/user">
-      <el-avatar
-        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-      />
+      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
       <!-- <p>GEM</p> -->
     </a>
   </div>
@@ -60,13 +58,13 @@ const direction = ref('ltr')
         <span>随笔</span>
       </el-menu-item>
       <el-menu-item index="4">
+        <el-icon><CirclePlus /></el-icon>
+        <span>发布</span>
+      </el-menu-item>
+      <el-menu-item index="4">
         <el-icon><UserFilled /></el-icon>
         <span>用户信息</span>
       </el-menu-item>
-      <!-- <el-menu-item index="4">
-        <el-icon><setting /></el-icon>
-        <span>修改密码</span>
-      </el-menu-item> -->
     </el-menu>
   </el-drawer>
 </template>
