@@ -15,7 +15,7 @@ const direction = ref('ltr')
     <div class="mini" @click="drawer = true">
       <el-icon :size="30"><Expand /></el-icon>
     </div>
-    <div class="title">后台管理</div>
+    <div class="title">用户中心</div>
     <a class="userinfo" href="/user">
       <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
       <!-- <p>GEM</p> -->
