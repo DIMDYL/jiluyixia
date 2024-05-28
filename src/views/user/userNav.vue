@@ -1,72 +1,43 @@
 <script setup>
-import { ref } from 'vue'
-import { useScroll } from '@vueuse/core'
-const { y } = useScroll(window)
-const defaultactive = ref(location.pathname)
-
-const drawer = ref(false)
-const direction = ref('ltr')
+import { navurlstore } from '@/stores/navinfo.js'
+const userurl = navurlstore()
+userurl.url = location.pathname
+const handleOpen = (key) => {
+  userurl.updateurl(key)
+}
 </script>
 <template>
-  <div class="nav" :class="{ show: y >= 88 }">
-    <a class="logo" @click="drawer = true">
-      <el-icon :size="30"><Expand /></el-icon>
-    </a>
-    <div class="mini" @click="drawer = true">
-      <el-icon :size="30"><Expand /></el-icon>
-    </div>
-    <div class="title">用户中心</div>
-    <a class="userinfo" href="/user">
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
-      <!-- <p>GEM</p> -->
-    </a>
-  </div>
-  <el-drawer
-    v-model="drawer"
-    size="200px"
-    :with-header="false"
-    :lock-scroll="false"
-    append-to-body="true"
-    :direction="direction"
+  <el-menu
+    active-text-color="#ffd04b"
+    background-color="black"
+    class="el-menu-vertical-demo"
+    :default-active="userurl.url"
+    text-color="#fff"
+    @open="handleOpen"
+    @close="handleClose"
+    router
   >
-    <div class="title">
-      <p>记录一下</p>
-      <h3 @click="drawer = false">
-        <el-icon :size="30"><Fold /></el-icon>
-      </h3>
-    </div>
-    <el-menu
-      active-text-color="#ffd04b"
-      background-color="black"
-      class="el-menu-vertical-demo"
-      :default-active="defaultactive"
-      text-color="#fff"
-      @open="handleOpen"
-      @close="handleClose"
-      router
-    >
-      <el-menu-item index="/">
-        <el-icon><House /></el-icon>
-        <span>首页</span>
-      </el-menu-item>
-      <el-menu-item index="/user">
-        <el-icon><Notebook /></el-icon>
-        <span>日常</span>
-      </el-menu-item>
-      <el-menu-item index="/essay">
-        <el-icon><Tickets /></el-icon>
-        <span>随笔</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><CirclePlus /></el-icon>
-        <span>发布</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><UserFilled /></el-icon>
-        <span>用户信息</span>
-      </el-menu-item>
-    </el-menu>
-  </el-drawer>
+    <el-menu-item index="/">
+      <el-icon><House /></el-icon>
+      <span>首页</span>
+    </el-menu-item>
+    <el-menu-item index="/user">
+      <el-icon><Notebook /></el-icon>
+      <span>日常</span>
+    </el-menu-item>
+    <el-menu-item index="/essay">
+      <el-icon><Tickets /></el-icon>
+      <span>随笔</span>
+    </el-menu-item>
+    <el-menu-item index="/publish">
+      <el-icon><CirclePlus /></el-icon>
+      <span>发布</span>
+    </el-menu-item>
+    <el-menu-item index="/userinfo">
+      <el-icon><UserFilled /></el-icon>
+      <span>用户信息</span>
+    </el-menu-item>
+  </el-menu>
 </template>
 <style lang="less" scoped>
 .nav {
@@ -80,8 +51,8 @@ const direction = ref('ltr')
   justify-content: space-between;
   padding: 0 77px;
   align-items: center;
-  transition: 0.5s all;
-  background-color: black;
+  transition: 1s all;
+  background-color: rgba(0, 0, 0, 0) !important;
   .mini {
     cursor: pointer;
     display: none;
@@ -114,11 +85,14 @@ const direction = ref('ltr')
 }
 .show {
   height: 55px !important;
-  background-color: rgba(0, 0, 0, 0.726);
-  font-weight: 800 !important;
-  border-bottom: 3px solid #ffcf4b90;
-  border-radius: 0 0 30px 30px;
+  background-color: transparent !important;
+  // font-weight: 800 !important;
+  // border-bottom: 3px solid #ffcf4b90;
+  // border-radius: 0 0 30px 30px;
   box-sizing: border-box;
+  .title {
+    display: none;
+  }
 }
 .el-menu--horizontal.el-menu,
 .el-menu--horizontal > .el-menu-item.is-active,

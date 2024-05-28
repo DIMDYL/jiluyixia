@@ -1,11 +1,18 @@
 <script setup>
+import userNavPanel from './userNavPanel.vue'
 import userNav from './userNav.vue'
 </script>
 <template>
   <div class="user">
-    <userNav />
+    <userNavPanel />
     <div class="content">
-      <RouterView />
+      <div class="userleftnav">
+        <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+        <userNav />
+      </div>
+      <div class="right">
+        <RouterView />
+      </div>
     </div>
   </div>
 </template>
@@ -13,7 +20,28 @@ import userNav from './userNav.vue'
 .user {
   width: 100%;
   .content {
-    margin-top: 77px;
+    display: flex;
+    height: 100vh;
+    .userleftnav {
+      width: 200px;
+      height: 100%;
+      padding: 70px 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: black;
+      .el-avatar {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .right {
+      padding: 70px 0 0 0;
+      box-sizing: border-box;
+      flex: 1;
+      overflow-y: auto;
+    }
   }
 }
 </style>

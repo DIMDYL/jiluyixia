@@ -4,6 +4,9 @@
 <style>
 /*当页面大于 1200px 时，大屏幕，主要是 PC 端*/
 @media (min-width: 1200px) {
+  .userhomenav {
+    display: none !important;
+  }
   .dailytopimg {
     min-height: 500px !important;
   }
@@ -14,10 +17,29 @@
   .dailytopimg {
     min-height: 500px !important;
   }
+  .userhomenav {
+    display: none !important;
+  }
 }
 
 /*在 768 和 991 像素之间的屏幕里，小屏幕，主要是 PAD*/
 @media (min-width: 768px) and (max-width: 991px) {
+  .userhomenav {
+    justify-content: space-between !important;
+    padding: 0 10px !important;
+    .logo {
+      display: none !important;
+    }
+  }
+  .userleftnav {
+    display: none !important;
+  }
+  .content {
+    height: auto !important;
+  }
+  .el-dialog {
+    width: 50% !important;
+  }
   .nav {
     padding: 0 20px !important;
     .logo {
@@ -58,6 +80,27 @@
 
 /*在 480 和 767 像素之间的屏幕里，超小屏幕，主要是手机*/
 @media (min-width: 480px) and (max-width: 767px) {
+  .userhomenav {
+    justify-content: space-between !important;
+    padding: 0 10px !important;
+    .logo {
+      display: none !important;
+    }
+  }
+  .publish {
+    .el-form {
+      width: 100% !important;
+    }
+  }
+  .content {
+    height: auto !important;
+  }
+  .userleftnav {
+    display: none !important;
+  }
+  .el-dialog {
+    width: 80% !important;
+  }
   .nav {
     flex-wrap: wrap;
     /* height: 100px !important; */
@@ -106,8 +149,39 @@
 
 /*在小于 480 像素的屏幕，微小屏幕，更低分辨率的手机*/
 @media (max-width: 479px) {
+  .userhomenav {
+    justify-content: space-between !important;
+    padding: 0 10px !important;
+    .logo {
+      display: none !important;
+    }
+  }
+  .publish {
+    .el-form {
+      width: 100% !important;
+    }
+  }
+  .userleftnav {
+    display: none !important;
+  }
+  .content {
+    height: auto !important;
+  }
+  .el-dialog {
+    width: 80% !important;
+  }
   .navuser {
     display: none !important;
+  }
+  .userinfobox {
+    justify-content: center;
+    width: 80% !important;
+    .info {
+      margin-left: inherit !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
   .leftarticle,
   .rightarticle {

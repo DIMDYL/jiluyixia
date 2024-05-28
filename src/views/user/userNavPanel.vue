@@ -1,36 +1,22 @@
 <script setup>
 import { ref } from 'vue'
 import { useScroll } from '@vueuse/core'
-const navurl = ref(location.pathname)
 const { y } = useScroll(window)
+import userNav from './userNav.vue'
 const drawer = ref(false)
 const direction = ref('ltr')
 </script>
 <template>
-  <div class="nav" :class="{ show: y >= 88 }">
-    <a class="logo" href="/">
+  <!-- :class="{ show: y >= 88 }" -->
+  <div class="userhomenav" :class="{ show: y >= 77 }">
+    <a class="logo" href="/user">
       <h3>记录一下</h3>
       <p>记录平凡的每一天</p>
     </a>
     <div class="mini" @click="drawer = true">
       <el-icon :size="30"><Expand /></el-icon>
     </div>
-    <div class="navlist">
-      <el-menu
-        :default-active="navurl"
-        @select="handleSelect"
-        class="el-menu-demo"
-        mode="horizontal"
-        background-color="transparent"
-        text-color="#fff"
-        :ellipsis="false"
-        active-text-color="#ffd04b"
-        router
-      >
-        <el-menu-item index="/">首页</el-menu-item>
-        <el-menu-item index="/user">用户中心</el-menu-item>
-      </el-menu>
-    </div>
+    <div class="userhometitle">用户中心</div>
     <a class="userinfo" href="/user">
       <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
       <!-- <p>GEM</p> -->
@@ -50,10 +36,11 @@ const direction = ref('ltr')
         <el-icon :size="30"><Fold /></el-icon>
       </h3>
     </div>
+    <userNav />
   </el-drawer>
 </template>
 <style lang="less" scoped>
-.nav {
+.userhomenav {
   width: 100%;
   height: 77px;
   position: fixed;
@@ -64,7 +51,8 @@ const direction = ref('ltr')
   justify-content: space-between;
   padding: 0 77px;
   align-items: center;
-  transition: 0.5s all;
+  transition: 1s all;
+  background-color: rgba(0, 0, 0, 0) !important;
   .mini {
     cursor: pointer;
     display: none;
@@ -90,20 +78,21 @@ const direction = ref('ltr')
     padding: 0 10px;
     color: white;
     text-decoration: none;
-    &:hover {
-      color: rgb(211, 211, 211);
-    }
+    // &:hover {
+    //   color: rgb(211, 211, 211);
+    // }
   }
 }
 .show {
-  height: 55px;
-  background-color: rgba(0, 0, 0, 0.553);
-  border-bottom: 3px solid #ffcf4b90;
-  // box-shadow: 2px 2px 10px 5px rgba(64, 63, 63, 0.482);
-  font-weight: 800 !important;
-  // border-bottom: 5px solid #ffcf4b5b;
-  border-radius: 0 0 30px 30px;
+  height: 55px !important;
+  background-color: transparent !important;
+  // font-weight: 800 !important;
+  // border-bottom: 3px solid #ffcf4b90;
+  // border-radius: 0 0 30px 30px;
   box-sizing: border-box;
+  .userhometitle {
+    display: none !important;
+  }
 }
 .el-menu--horizontal.el-menu,
 .el-menu--horizontal > .el-menu-item.is-active,
@@ -122,5 +111,9 @@ const direction = ref('ltr')
   h3 {
     cursor: pointer;
   }
+}
+.el-menu {
+  border-right: none;
+  // margin-top: 100px !important;
 }
 </style>

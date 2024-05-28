@@ -28,6 +28,16 @@ const router = createRouter({
           path: '/essay',
           meta: { title: '随笔' },
           component: () => import('@/views/user/essay/index.vue')
+        },
+        {
+          path: '/publish',
+          meta: { title: '随笔' },
+          component: () => import('@/views/user/publish/index.vue')
+        },
+        {
+          path: '/userinfo',
+          meta: { title: '用户信息' },
+          component: () => import('@/views/user/userinfo/index.vue')
         }
       ]
     }
