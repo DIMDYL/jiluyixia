@@ -45,9 +45,12 @@ const router = createRouter({
 })
 router.afterEach((to) => {
   document.title = `${to.meta.title || ''} - 记录一下`
-  const contentContainer = document.querySelector('.main')
+  const contentContainer = document.querySelector('.app')
+  const contentContainer2 = document.querySelector('.user .right')
   if (contentContainer) {
     contentContainer.scrollTop = 0
+  } else if (contentContainer2) {
+    contentContainer2.scrollTop = 0
   } else {
     // 如果没有找到特定容器，则尝试滚动整个窗口
     window.scrollTo(0, 0)

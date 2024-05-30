@@ -14,7 +14,6 @@ const handleOpen = (key) => {
     :default-active="userurl.url"
     text-color="#fff"
     @open="handleOpen"
-    @close="handleClose"
     router
   >
     <el-menu-item index="/">

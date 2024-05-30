@@ -12,7 +12,6 @@ import userInfo from './userInfo.vue'
 </template>
 <style lang="less" scoped>
 .userinfo {
-  margin-top: -77px;
   width: 100%;
   display: flex;
   height: 100vh;

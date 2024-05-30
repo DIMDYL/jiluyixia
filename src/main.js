@@ -1,6 +1,5 @@
 import './assets/base.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import 'animate.css'

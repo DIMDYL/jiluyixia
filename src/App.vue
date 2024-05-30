@@ -10,15 +10,27 @@
   .dailytopimg {
     min-height: 500px !important;
   }
+  .content .right {
+    margin-left: 200px;
+  }
+  .content .right .article {
+    padding: inherit;
+  }
 }
 
 /*在 992 和 1199 像素之间的屏幕里，中等屏幕，分辨率低的 PC*/
 @media (min-width: 992px) and (max-width: 1199px) {
+  .content .right .article {
+    padding: inherit;
+  }
   .dailytopimg {
     min-height: 500px !important;
   }
   .userhomenav {
     display: none !important;
+  }
+  .content .right {
+    margin-left: 200px;
   }
 }
 
@@ -35,7 +47,8 @@
     display: none !important;
   }
   .content {
-    height: auto !important;
+    /* height: auto !important; */
+    height: 100vh;
   }
   .el-dialog {
     width: 50% !important;
@@ -165,7 +178,7 @@
     display: none !important;
   }
   .content {
-    height: auto !important;
+    /* height: auto !important; */
   }
   .el-dialog {
     width: 80% !important;
@@ -223,6 +236,7 @@
       /* width: 127px !important; */
     }
     .word {
+      width: 100% !important;
       p {
         font-size: 13px !important;
         line-height: 20px !important;

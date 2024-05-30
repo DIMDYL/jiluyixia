@@ -2,5 +2,5 @@
 import articleComponents from '@/components/article/index.vue'
 </script>
 <template>
-  <articleComponents boxwidth="80%" title="《 随笔 》" :isuserHome="true" />
+  <articleComponents boxwidth="77%" title="《 随笔 》" :classification="1" :isuserHome="true" />
 </template>

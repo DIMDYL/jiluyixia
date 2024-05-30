@@ -18,7 +18,6 @@ const direction = ref('ltr')
     <div class="navlist">
       <el-menu
         :default-active="navurl"
-        @select="handleSelect"
         class="el-menu-demo"
         mode="horizontal"
         background-color="transparent"

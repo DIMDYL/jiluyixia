@@ -21,8 +21,9 @@ import userNav from './userNav.vue'
   width: 100%;
   .content {
     display: flex;
-    height: 100vh;
     .userleftnav {
+      position: fixed;
+      z-index: 10;
       width: 200px;
       height: 100%;
       padding: 70px 0;
@@ -37,10 +38,8 @@ import userNav from './userNav.vue'
       }
     }
     .right {
-      padding: 70px 0 0 0;
+      width: 100%;
       box-sizing: border-box;
-      flex: 1;
-      overflow-y: auto;
     }
   }
 }

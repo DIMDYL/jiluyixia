@@ -6,6 +6,7 @@ import articleComponents from '@/components/article/index.vue'
   <div class="daily">
     <indexTop />
     <articleComponents
+      :classification="2"
       boxwidth="1000px"
       title="《 日常 》"
       :isuserHome="false"

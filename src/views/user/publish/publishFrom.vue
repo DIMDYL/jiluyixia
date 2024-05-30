@@ -1,4 +1,5 @@
 <script setup>
+import { addArticle } from '@/apis/userapis.js'
 import { ref } from 'vue'
 let article = ref({
   classification: true,
@@ -12,15 +13,23 @@ const handleRemove = (file) => {
   fileList.value = fileList.value.filter((item) => {
     return item.uid !== file.uid
   })
-  console.log(fileList.value)
 }
 
 const handlePictureCardPreview = (file) => {
   dialogImageUrl.value = file.url
   dialogVisible.value = true
 }
-const onSubmit = () => {
-  console.log(fileList.value)
+const onSubmit = async () => {
+  // 类型
+  const newclassification = ref(null)
+  // 如果为true就是文章,不然就是随笔
+  if (article.value.classification) newclassification.value = 2
+  else newclassification.value = 1
+  let fd = new FormData()
+  fileList.value.filter((item) => fd.append('imgs', item.raw))
+  fd.append('classification', newclassification.value)
+  fd.append('content', article.value.content)
+  addArticle(fd)
 }
 </script>
 <script setup></script>
