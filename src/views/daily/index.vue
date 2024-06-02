@@ -7,7 +7,7 @@ import articleComponents from '@/components/article/index.vue'
     <indexTop />
     <articleComponents
       :classification="2"
-      boxwidth="1000px"
+      boxwidth="70%"
       title="《 日常 》"
       :isuserHome="false"
     />

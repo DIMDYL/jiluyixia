@@ -1,5 +1,5 @@
 <script setup>
-import publishFrom from './publishFrom.vue'
+import editFrom from './editFrom.vue'
 import { userInfostore } from '@/stores/userinfo.js'
 import { loginagain } from '@/apis/userapis'
 import { ref } from 'vue'
@@ -20,9 +20,9 @@ const off = () => {
 }
 </script>
 <template>
-  <div class="publish">
+  <div class="editFrom">
     <h1>内容发布</h1>
-    <publishFrom />
+    <editFrom />
   </div>
   <el-dialog
     v-model="userstore.dialogVisible"
@@ -59,7 +59,7 @@ const off = () => {
   </el-dialog>
 </template>
 <style lang="less" scoped>
-.publish {
+.editFrom {
   width: 100%;
   display: flex;
   margin-top: 70px;

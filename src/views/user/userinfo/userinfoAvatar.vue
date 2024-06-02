@@ -1,4 +1,5 @@
 <script setup>
+
 import { ref } from 'vue'
 const inputimg = ref(null)
 const updateimg = () => {

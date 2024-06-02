@@ -2,5 +2,12 @@
 import articleComponents from '@/components/article/index.vue'
 </script>
 <template>
-  <articleComponents boxwidth="77%" title="《 我的日常 》" :classification="2" :isuserHome="true" />
+  <articleComponents
+    boxwidth="80%"
+    title="《 我的日常 》"
+    paddingnumber="70px 0"
+    :classification="2"
+    :isuserHome="true"
+  />
+  <el-backtop :right="20" :bottom="77" />
 </template>

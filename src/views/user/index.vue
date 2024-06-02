@@ -1,15 +1,16 @@
 <script setup>
 import userNavPanel from './userNavPanel.vue'
-import userNav from './userNav.vue'
 </script>
 <template>
   <div class="user">
     <userNavPanel />
-    <div class="content">
-      <div class="userleftnav">
-        <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+    <div class="usercontent">
+      <!-- <div class="userleftnav">
+        <el-avatar
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        />
         <userNav />
-      </div>
+      </div> -->
       <div class="right">
         <RouterView />
       </div>
@@ -19,7 +20,7 @@ import userNav from './userNav.vue'
 <style lang="less" scoped>
 .user {
   width: 100%;
-  .content {
+  .usercontent {
     display: flex;
     .userleftnav {
       position: fixed;
@@ -39,7 +40,6 @@ import userNav from './userNav.vue'
     }
     .right {
       width: 100%;
-      box-sizing: border-box;
     }
   }
 }

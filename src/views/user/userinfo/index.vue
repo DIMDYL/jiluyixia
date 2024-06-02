@@ -1,11 +1,9 @@
 <script setup>
-import userinfoAvatar from './userinfoAvatar.vue'
 import userInfo from './userInfo.vue'
 </script>
 <template>
   <div class="userinfo">
     <div class="userinfobox">
-      <userinfoAvatar />
       <userInfo />
     </div>
   </div>

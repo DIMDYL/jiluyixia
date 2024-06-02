@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useScroll } from '@vueuse/core'
+import { userInfostore } from '@/stores/userinfo.js'
+const user = userInfostore()
 const { y } = useScroll(window)
 import userNav from './userNav.vue'
 const drawer = ref(false)
@@ -9,17 +11,18 @@ const direction = ref('ltr')
 <template>
   <!-- :class="{ show: y >= 88 }" -->
   <div class="userhomenav" :class="{ show: y >= 77 }">
-    <a class="logo" href="/user">
-      <h3>记录一下</h3>
-      <p>记录平凡的每一天</p>
+    <a class="logo" @click="drawer = true">
+      <el-icon :size="30"><Expand /></el-icon>
     </a>
     <div class="mini" @click="drawer = true">
       <el-icon :size="30"><Expand /></el-icon>
     </div>
     <div class="userhometitle">用户中心</div>
     <a class="userinfo" href="/user">
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
-      <!-- <p>GEM</p> -->
+      <el-avatar v-if="user.userinfo" :src="user.userinfo.avatar" />
+      <div class="login" v-if="!user.userinfo">
+        <el-icon><UserFilled /></el-icon>
+      </div>
     </a>
   </div>
   <el-drawer
@@ -43,10 +46,9 @@ const direction = ref('ltr')
 .userhomenav {
   width: 100%;
   height: 77px;
-  position: fixed;
-  left: 0;
-  top: 0;
   z-index: 27;
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   padding: 0 77px;
@@ -85,14 +87,14 @@ const direction = ref('ltr')
 }
 .show {
   height: 55px !important;
-  background-color: transparent !important;
+  background-color: rgba(0, 0, 0, 0.683) !important;
   // font-weight: 800 !important;
-  // border-bottom: 3px solid #ffcf4b90;
-  // border-radius: 0 0 30px 30px;
+  border-bottom: 3px solid #ffcf4b90;
+  border-radius: 0 0 30px 30px;
   box-sizing: border-box;
-  .userhometitle {
-    display: none !important;
-  }
+  // .userhometitle {
+  //   display: none !important;
+  // }
 }
 .el-menu--horizontal.el-menu,
 .el-menu--horizontal > .el-menu-item.is-active,

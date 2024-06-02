@@ -42,9 +42,6 @@ const handleOpen = (key) => {
 .nav {
   width: 100%;
   height: 77px;
-  position: fixed;
-  left: 0;
-  top: 0;
   z-index: 27;
   display: flex;
   justify-content: space-between;

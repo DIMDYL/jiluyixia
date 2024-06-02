@@ -1,11 +1,13 @@
 import axios from 'axios'
+import { userInfostore } from '@/stores/userinfo.js'
+const user = userInfostore()
 const request = axios.create({
   baseURL: 'http://127.0.0.1:8080/api',
   timeout: 5000
 })
 request.interceptors.request.use(
   (config) => {
-    config.headers.token = localStorage.getItem('token')
+    config.headers.token = user.token
     return config
   },
   (e) => {
@@ -21,11 +23,10 @@ request.interceptors.response.use(
     const data = res.data
     if (data.code === 0) {
       ElNotification.error({
-        title: '成功',
+        title: '错误',
         message: data.msg
       })
     } else if (data.code === 1) {
-      console.log(222)
       ElNotification({
         title: '成功',
         message: data.msg
@@ -39,7 +40,13 @@ request.interceptors.response.use(
     return res.data
   },
   (e) => {
-    ElNotification({
+    if (e.response.status === 401) {
+      console.log(1)
+      user.setdialogVisible(true)
+      console.log(user.dialogVisible)
+      user.clear()
+    }
+    ElNotification.error({
       title: '错误',
       message: 'netWork Error'
     })

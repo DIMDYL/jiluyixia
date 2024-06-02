@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useScroll } from '@vueuse/core'
+import { userInfostore } from '@/stores/userinfo.js'
+const user = userInfostore()
 const navurl = ref(location.pathname)
 const { y } = useScroll(window)
 const drawer = ref(false)
@@ -15,6 +17,7 @@ const direction = ref('ltr')
     <div class="mini" @click="drawer = true">
       <el-icon :size="30"><Expand /></el-icon>
     </div>
+    <div class="userhometitle">记录一下</div>
     <div class="navlist">
       <el-menu
         :default-active="navurl"
@@ -31,7 +34,10 @@ const direction = ref('ltr')
       </el-menu>
     </div>
     <a class="userinfo" href="/user">
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+      <el-avatar v-if="user.userinfo" :src="user.userinfo.avatar" />
+      <div class="login" v-if="!user.userinfo">
+        <el-icon><UserFilled /></el-icon>
+      </div>
       <!-- <p>GEM</p> -->
     </a>
   </div>
@@ -49,6 +55,18 @@ const direction = ref('ltr')
         <el-icon :size="30"><Fold /></el-icon>
       </h3>
     </div>
+    <el-menu
+      :default-active="navurl"
+      class="el-menu-demo"
+      background-color="transparent"
+      text-color="#fff"
+      :ellipsis="false"
+      active-text-color="#ffd04b"
+      router
+    >
+      <el-menu-item index="/">首页</el-menu-item>
+      <el-menu-item index="/user">用户中心</el-menu-item>
+    </el-menu>
   </el-drawer>
 </template>
 <style lang="less" scoped>
@@ -67,6 +85,13 @@ const direction = ref('ltr')
   .mini {
     cursor: pointer;
     display: none;
+  }
+  .login {
+    display: flex;
+    align-items: center;
+    .el-icon {
+      font-size: 27px;
+    }
   }
   .logo {
     display: block;
@@ -121,5 +146,9 @@ const direction = ref('ltr')
   h3 {
     cursor: pointer;
   }
+}
+.el-menu {
+  border-right: none;
+  // margin-top: 100px !important;
 }
 </style>
