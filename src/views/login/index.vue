@@ -26,7 +26,7 @@ const userlogin = async () => {
         <el-input v-model="user.username" />
       </el-form-item>
       <el-form-item label="密码">
-        <el-input v-model="user.password" />
+        <el-input type="password" v-model="user.password" />
       </el-form-item>
       <el-form-item>
         <el-button
@@ -44,7 +44,7 @@ const userlogin = async () => {
   padding: 70px 10px;
   box-sizing: border-box;
   // height: 700px;
-  margin-top: 200px;
+  // margin-top: 200px;
   display: flex;
   justify-content: center;
   flex-direction: column;

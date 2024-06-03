@@ -1,9 +1,18 @@
 <script setup>
 import { navurlstore } from '@/stores/navinfo.js'
+import { userInfostore } from '@/stores/userinfo.js'
+const user = userInfostore()
 const userurl = navurlstore()
 userurl.url = location.pathname
 const handleOpen = (key) => {
   userurl.updateurl(key)
+}
+const logout = () => {
+  console.log(1)
+  user.clear()
+  setTimeout(() => {
+    history.go(0)
+  }, 1000)
 }
 </script>
 <template>
@@ -20,7 +29,7 @@ const handleOpen = (key) => {
       <el-icon><House /></el-icon>
       <span>首页</span>
     </el-menu-item>
-    <el-menu-item index="/user">
+    <el-menu-item index="/daily">
       <el-icon><Notebook /></el-icon>
       <span>日常</span>
     </el-menu-item>
@@ -35,6 +44,10 @@ const handleOpen = (key) => {
     <el-menu-item index="/userinfo">
       <el-icon><UserFilled /></el-icon>
       <span>用户信息</span>
+    </el-menu-item>
+    <el-menu-item @click="logout">
+      <el-icon><SwitchButton /></el-icon>
+      <span>退出登录</span>
     </el-menu-item>
   </el-menu>
 </template>

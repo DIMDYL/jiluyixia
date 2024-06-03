@@ -5,7 +5,6 @@ import articleComponents from '@/components/article/index.vue'
   <articleComponents
     boxwidth="80%"
     title="《 我的日常 》"
-    paddingnumber="70px 0"
     :classification="2"
     :isuserHome="true"
   />

@@ -21,7 +21,7 @@ const off = () => {
 </script>
 <template>
   <div class="editFrom">
-    <h1>内容发布</h1>
+    <h1>修改内容</h1>
     <editFrom />
   </div>
   <el-dialog
@@ -62,7 +62,7 @@ const off = () => {
 .editFrom {
   width: 100%;
   display: flex;
-  margin-top: 70px;
+  // margin-top: 70px;
   flex-direction: column;
   align-items: center;
   padding: 10px;

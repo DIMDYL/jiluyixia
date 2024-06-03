@@ -12,6 +12,7 @@ export const addArticle = (data) => {
     }
   })
 }
+// 根据分类id分页查询文章
 export const getallArticle = (page, classification) => {
   return request.get(
     '/article/getall?page=' +
@@ -21,7 +22,7 @@ export const getallArticle = (page, classification) => {
       classification
   )
 }
-
+// 登录
 export const login = (data) => {
   request.post('/user/login', data).then((res) => {
     if (res.code === 1) {
@@ -32,6 +33,7 @@ export const login = (data) => {
     }
   })
 }
+// 再次登录
 export const loginagain = (data) => {
   request.post('/user/login', data).then((res) => {
     if (res.code === 1) {
@@ -43,4 +45,61 @@ export const loginagain = (data) => {
 }
 export const testlogin = () => {
   return request.get('/user/testlogin')
+}
+// 根据id获取文章
+export const getByIdAndUserId = (id) => {
+  return request.get('/article/get/' + id)
+}
+// 根据id获取文章
+export const updateArticle = (data) => {
+  return request.put('/article/update/', data).then((res) => {
+    if (res.code === 1) {
+      setTimeout(() => {
+        history.go(0)
+      }, 500)
+    }
+  })
+}
+// 删除文章
+export const deleteArticle = (id) => {
+  request.delete('/article/delete/' + id).then((res) => {
+    if (res.code === 1) {
+      setTimeout(() => {
+        history.go(0)
+      }, 500)
+    }
+  })
+}
+export const updateavatar = (data) => {
+  request.delete('/user/updateavatar/', data).then((res) => {
+    if (res.code === 1) {
+      console.log(res)
+    }
+  })
+}
+
+// 更新用户信息
+export const updateuser = (data) => {
+  request.put('/user/update/', data).then((res) => {
+    if (res.code === 1) {
+      console.log(res)
+      user.setuserinfo(res.data)
+      setTimeout(() => {
+        history.go(0)
+      }, 500)
+    }
+  })
+}
+// 更新用户信息
+export const lookarticle = (id) => {
+  return request.get('/article/look/' + id)
+}
+
+// 更新用户信息
+export const getuserinfo = () => {
+  request.get('/user/userinfo').then((res) => {
+    if (res.code === 1) {
+      user.setuserinfo(res.data)
+    }
+  })
 }

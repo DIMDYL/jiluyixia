@@ -1,5 +1,5 @@
 <script setup>
-import { getallArticle } from '@/apis/userapis.js'
+import { getallArticle, deleteArticle } from '@/apis/userapis.js'
 import { ref } from 'vue'
 const count = ref(1)
 const articlelist = ref([])
@@ -10,16 +10,29 @@ const props = defineProps({
   title: String,
   classification: Number
 })
+const deletebyid = (id) => {
+  ElMessageBox.confirm('确定要删除吗？', '警告', {
+    confirmButtonText: '删除',
+    cancelButtonText: '取消'
+  })
+    .then(() => {
+      deleteArticle(id)
+      getall()
+    })
+    .catch(() => {})
+}
 const load = async () => {
+  getall()
+}
+const getall = async () => {
   const { data } = await getallArticle(count.value, props.classification)
-  console.log(data)
   if (data.records.length !== 0) {
     articlelist.value.push(...data.records)
     count.value++
   }
 }
 const imgpath = (val) => {
-  return JSON.parse(val)[0]
+  return JSON.parse(val)[0].url
 }
 </script>
 <template>
@@ -57,8 +70,8 @@ const imgpath = (val) => {
                 </div>
                 <div class="edit look">
                   <a v-if="isuserHome" :href="'/edit/' + item.id">编辑</a>
-                  <a v-if="isuserHome">删除</a>
-                  <a>查看详情 ></a>
+                  <a v-if="isuserHome" @click="deletebyid(item.id)">删除</a>
+                  <a target="_blank" :href="'/look/' + item.id">查看详情 ></a>
                 </div>
               </div>
             </div>
@@ -74,13 +87,13 @@ const imgpath = (val) => {
                 </div>
                 <div class="edit">
                   <a v-if="isuserHome" :href="'/edit/' + item.id">编辑</a>
-                  <a v-if="isuserHome">删除</a>
-                  <a>查看详情 ></a>
+                  <a v-if="isuserHome" @click="deletebyid(item.id)">删除</a>
+                  <a target="_blank" :href="'/look/' + item.id">查看详情 ></a>
                 </div>
               </div>
             </div>
             <div class="leftimg" v-if="imgpath(item.imgs) !== undefined">
-              <img :src="imgpath(item.imgs)" class="uniform-image" />
+              <img class="uniform-image" :src="imgpath(item.imgs)" />
             </div>
           </div>
         </div>

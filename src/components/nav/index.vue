@@ -30,6 +30,7 @@ const direction = ref('ltr')
         router
       >
         <el-menu-item index="/">首页</el-menu-item>
+        <el-menu-item index="/jottings">随笔</el-menu-item>
         <el-menu-item index="/user">用户中心</el-menu-item>
       </el-menu>
     </div>
@@ -65,6 +66,7 @@ const direction = ref('ltr')
       router
     >
       <el-menu-item index="/">首页</el-menu-item>
+      <el-menu-item index="/jottings">随笔</el-menu-item>
       <el-menu-item index="/user">用户中心</el-menu-item>
     </el-menu>
   </el-drawer>

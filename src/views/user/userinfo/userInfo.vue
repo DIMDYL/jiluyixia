@@ -1,20 +1,12 @@
 <script setup>
 import { userInfostore } from '@/stores/userinfo.js'
-import { ref } from 'vue'
+import { getuserinfo } from '@/apis/userapis.js'
+getuserinfo()
 const user = userInfostore()
-const inputimg = ref(null)
-const updateimg = () => {
-  inputimg.value.click()
-}
 </script>
 <template>
   <div class="avatar animate__animated animate__wobble">
-    <el-avatar
-      src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-      @click="updateimg"
-    />
-    <input style="display: none" type="file" ref="inputimg" />
-    <el-icon @click="updateimg"><Plus /></el-icon>
+    <el-avatar :src="user.userinfo.avatar" />
   </div>
   <div class="info">
     <div>
@@ -34,7 +26,7 @@ const updateimg = () => {
       <a>{{ user.userinfo.createTime }}</a>
     </div>
 
-    <el-button>编辑</el-button>
+    <a class="updateuser" href="/updateuser">编辑</a>
   </div>
 </template>
 <style lang="less" scoped>
@@ -60,13 +52,24 @@ const updateimg = () => {
     background-color: black;
     color: white;
   }
+  .updateuser {
+    padding: 10px 20px;
+    font-weight: 800;
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+    color: #faca45cb;
+    text-shadow: 0px 5px 10px rgb(224, 9, 239);
+  }
 }
 .avatar {
-  cursor: pointer;
+  // cursor: pointer;
   width: 150px;
   height: 150px;
   border-radius: 50%;
   position: relative;
+  border: 7px solid white;
   .el-icon {
     width: 30px;
     height: 30px;

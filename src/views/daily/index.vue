@@ -1,23 +1,13 @@
 <script setup>
-import indexTop from './indexTop.vue'
+import indexTop from '@/components/indexTop/index.vue'
 import articleComponents from '@/components/article/index.vue'
 </script>
 <template>
-  <div class="daily">
-    <indexTop />
-    <articleComponents
-      :classification="2"
-      boxwidth="70%"
-      title="《 日常 》"
-      :isuserHome="false"
-    />
-  </div>
+  <indexTop />
+  <articleComponents
+    :classification="2"
+    boxwidth="70%"
+    title="《 日常 》"
+    :isuserHome="false"
+  />
 </template>
-<style lang="less" scoped>
-.daily {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-</style>

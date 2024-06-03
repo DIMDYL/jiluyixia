@@ -14,7 +14,6 @@ const handleRemove = (file) => {
     return item.uid !== file.uid
   })
 }
-
 const handlePictureCardPreview = (file) => {
   dialogImageUrl.value = file.url
   dialogVisible.value = true
@@ -87,7 +86,7 @@ const onSubmit = async () => {
         class="ml-2"
         inline-prompt
         style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
-        active-text="文章"
+        active-text="日常"
         inactive-text="随笔"
       />
     </el-form-item>

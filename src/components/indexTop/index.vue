@@ -1,7 +1,7 @@
 <template>
   <div class="dailytopimg">
     <!-- <div class="topshadow"></div> -->
-    <img src="@/assets/0082CG59ly1hpbgir7ojmj30rs0ijwgu.jpg" />
+    <img src="@/assets/sjhp.jpg" />
     <div class="bottomshadow"></div>
   </div>
 </template>

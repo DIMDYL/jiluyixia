@@ -10,6 +10,12 @@
   .nav .userhometitle {
     display: none !important;
   }
+  .lookarticle {
+    width: 777px !important;
+  }
+  /* .look img {
+    border: 77px solid white !important;
+  } */
   /* .userhomenav {
     display: none !important;
   } */
@@ -17,6 +23,10 @@
 
 /*在 992 和 1199 像素之间的屏幕里，中等屏幕，分辨率低的 PC*/
 @media (min-width: 992px) and (max-width: 1199px) {
+  .lookarticle {
+    width: 777px !important;
+  }
+
   .nav .userhometitle {
     display: none !important;
   }
@@ -98,7 +108,8 @@
       display: none !important;
     }
   }
-  .publish {
+  .publish,
+  .editFrom {
     .el-form {
       width: 100% !important;
     }
@@ -141,9 +152,9 @@
 
 /*在小于 480 像素的屏幕，微小屏幕，更低分辨率的手机*/
 @media (max-width: 479px) {
-  .articlebottom .info,
-  .articlebottom .edit,
-  .articlebottom .look {
+  .content .articlebottom .info,
+  .content .articlebottom .edit,
+  .content.articlebottom .look {
     justify-content: center !important;
   }
 
@@ -172,7 +183,8 @@
       display: none !important;
     }
   }
-  .publish {
+  .publish,
+  .editFrom {
     .el-form {
       width: 100% !important;
     }
@@ -244,5 +256,11 @@
 .el-drawer {
   background-color: black !important;
   border-right: 4px solid #ffd04b;
+}
+.contentbox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

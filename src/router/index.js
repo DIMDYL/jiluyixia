@@ -18,15 +18,26 @@ const router = createRouter({
           path: '/login',
           meta: { title: '登录' },
           component: () => import('@/views/login/index.vue')
+        },
+        {
+          path: '/jottings',
+          meta: { title: '随笔' },
+          component: () => import('@/views/jottings/index.vue')
+        },
+        {
+          path: '/look/:id',
+          meta: { title: '文章详情' },
+          component: () => import('@/views/look/index.vue')
         }
       ]
     },
     {
       path: '/user',
+      redirect: '/userinfo',
       component: () => import('@/views/user/index.vue'),
       children: [
         {
-          path: '/user',
+          path: '/daily',
           meta: { title: '我的日常' },
           component: () => import('@/views/user/daily/index.vue')
         },
@@ -49,6 +60,11 @@ const router = createRouter({
           path: '/edit/:id',
           meta: { title: '修改文章' },
           component: () => import('@/views/user/edit/index.vue')
+        },
+        {
+          path: '/updateuser',
+          meta: { title: '修改用户' },
+          component: () => import('@/views/user/updateUser/index.vue')
         }
       ]
     }
@@ -70,7 +86,11 @@ router.beforeEach((to, form, next) => {
   } else {
     if (to.path === '/login') {
       next()
-    } else if (to.path != '/' && to.path != '/login') {
+    } else if (
+      to.path != '/' &&
+      to.path != '/login' &&
+      to.path != '/jottings'
+    ) {
       next('/login')
     } else {
       next()

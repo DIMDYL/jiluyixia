@@ -13,6 +13,7 @@ import userInfo from './userInfo.vue'
   width: 100%;
   display: flex;
   height: 100vh;
+  margin-top: -77px;
   justify-content: center;
   background-image: url('@/assets/userinfo.jpg');
   background-size: auto 100%;

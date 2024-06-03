@@ -2,7 +2,7 @@ import axios from 'axios'
 import { userInfostore } from '@/stores/userinfo.js'
 const user = userInfostore()
 const request = axios.create({
-  baseURL: 'http://127.0.0.1:8080/api',
+  baseURL: 'http://api.jiluyixia.com/api',
   timeout: 5000
 })
 request.interceptors.request.use(

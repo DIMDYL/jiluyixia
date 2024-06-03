@@ -17,7 +17,7 @@ export const userInfostore = defineStore(
       token.value = val
     }
     const clear = () => {
-      userinfo.value = null
+      userinfo.value = []
       token.value = null
     }
     return {
