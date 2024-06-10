@@ -27,7 +27,6 @@ export const login = (data) => {
   request.post('/user/login', data).then((res) => {
     if (res.code === 1) {
       router.push('/')
-      user.setuserinfo(res.data.userEntity)
       user.settoken(res.data.token)
       user.setdialogVisible(false)
     }
@@ -37,7 +36,6 @@ export const login = (data) => {
 export const loginagain = (data) => {
   request.post('/user/login', data).then((res) => {
     if (res.code === 1) {
-      user.setuserinfo(res.data.userEntity)
       user.settoken(res.data.token)
       user.setdialogVisible(false)
     }
@@ -82,8 +80,6 @@ export const updateavatar = (data) => {
 export const updateuser = (data) => {
   request.put('/user/update/', data).then((res) => {
     if (res.code === 1) {
-      console.log(res)
-      user.setuserinfo(res.data)
       setTimeout(() => {
         history.go(0)
       }, 500)
@@ -97,9 +93,5 @@ export const lookarticle = (id) => {
 
 // 更新用户信息
 export const getuserinfo = () => {
-  request.get('/user/userinfo').then((res) => {
-    if (res.code === 1) {
-      user.setuserinfo(res.data)
-    }
-  })
+  return request.get('/user/userinfo')
 }

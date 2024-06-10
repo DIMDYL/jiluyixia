@@ -1,22 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { userInfostore } from '@/stores/userinfo.js'
 import { updateuser } from '@/apis/userapis.js'
 import { getuserinfo } from '@/apis/userapis.js'
-getuserinfo()
 const router = useRouter()
-const userstore = userInfostore()
 const img = ref(null)
-const path = ref(userstore.userinfo.avatar)
-const user = ref({
-  newpassword: '',
-  username: userstore.userinfo.username,
-  oldpassword: '',
-  confirmpassword: '',
-  nickname: userstore.userinfo.nickname,
-  id: userstore.userinfo.id
+const path = ref({})
+const userinfo = ref({})
+onMounted(async () => {
+  const data = await getuserinfo()
+  userinfo.value = data.data
+  path.value = userinfo.value.avatar
+  user.value = {
+    newpassword: '',
+    username: userinfo.value.username,
+    oldpassword: '',
+    confirmpassword: '',
+    nickname: userinfo.value.nickname,
+    id: userinfo.value.id
+  }
 })
+const user = ref({})
 const upload = () => {
   img.value.click()
   console.log(1)
@@ -36,7 +40,7 @@ const imgChange = () => {
 const update = () => {
   let fd = new FormData()
   fd.append('file', img.value.files[0])
-  fd.append('id', userstore.userinfo.id)
+  fd.append('id', userinfo.value.id)
   fd.append('oldpassword', user.value.oldpassword)
   fd.append('nickname', user.value.nickname)
   fd.append('newpassword', user.value.newpassword)

@@ -32,6 +32,9 @@ const getall = async () => {
   }
 }
 const imgpath = (val) => {
+  if (JSON.parse(val).length === 0) {
+    return ''
+  }
   return JSON.parse(val)[0].url
 }
 </script>
@@ -57,7 +60,7 @@ const imgpath = (val) => {
             :style="{ width: boxwidth }"
             v-if="index % 2 === 0"
           >
-            <div class="leftimg" v-if="imgpath(item.imgs) !== undefined">
+            <div class="leftimg" v-if="imgpath(item.imgs) !== ''">
               <img class="uniform-image" :src="imgpath(item.imgs)" />
             </div>
             <div class="rightinfo">
@@ -92,7 +95,7 @@ const imgpath = (val) => {
                 </div>
               </div>
             </div>
-            <div class="leftimg" v-if="imgpath(item.imgs) !== undefined">
+            <div class="leftimg" v-if="imgpath(item.imgs) !== ''">
               <img class="uniform-image" :src="imgpath(item.imgs)" />
             </div>
           </div>

@@ -1,15 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 import { useScroll } from '@vueuse/core'
-import { userInfostore } from '@/stores/userinfo.js'
-const user = userInfostore()
 const { y } = useScroll(window)
 import userNav from './userNav.vue'
 const drawer = ref(false)
 const direction = ref('ltr')
 </script>
 <template>
-  <!-- :class="{ show: y >= 88 }" -->
   <div class="userhomenav" :class="{ show: y >= 77 }">
     <a class="logo" @click="drawer = true">
       <el-icon :size="30"><Expand /></el-icon>
@@ -19,8 +16,7 @@ const direction = ref('ltr')
     </div>
     <div class="userhometitle">用户中心</div>
     <a class="userinfo" href="/user">
-      <el-avatar v-if="user.userinfo" :src="user.userinfo.avatar" />
-      <div class="login" v-if="!user.userinfo">
+      <div class="login">
         <el-icon><UserFilled /></el-icon>
       </div>
     </a>
@@ -95,6 +91,13 @@ const direction = ref('ltr')
   // .userhometitle {
   //   display: none !important;
   // }
+}
+.login {
+  display: flex;
+  align-items: center;
+  .el-icon {
+    font-size: 27px;
+  }
 }
 .el-menu--horizontal.el-menu,
 .el-menu--horizontal > .el-menu-item.is-active,

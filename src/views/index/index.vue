@@ -7,7 +7,7 @@ import indexNav from '@/components/nav/index.vue'
     <RouterView />
   </div>
   <div class="fooder">
-    <p>@DIMDYL</p>
+    <p>@DIM</p>
   </div>
   <el-backtop :right="20" :bottom="77" />
 </template>

@@ -1,21 +1,24 @@
 <script setup>
-import { userInfostore } from '@/stores/userinfo.js'
+import { ref, onMounted } from 'vue'
 import { getuserinfo } from '@/apis/userapis.js'
-getuserinfo()
-const user = userInfostore()
+const user = ref({})
+onMounted(async () => {
+  const data = await getuserinfo()
+  user.value = data.data
+})
 </script>
 <template>
   <div class="avatar animate__animated animate__wobble">
-    <el-avatar :src="user.userinfo.avatar" />
+    <el-avatar :src="user.avatar" />
   </div>
   <div class="info">
     <div>
       <p>昵称:</p>
-      <a>{{ user.userinfo.nickname }}</a>
+      <a>{{ user.nickname }}</a>
     </div>
     <div>
       <p>用户名:</p>
-      <a>{{ user.userinfo.username }}</a>
+      <a>{{ user.username }}</a>
     </div>
     <!-- <div>
       <p>邮箱:</p>
@@ -23,7 +26,7 @@ const user = userInfostore()
     </div> -->
     <div>
       <p>注册时间:</p>
-      <a>{{ user.userinfo.createTime }}</a>
+      <a>{{ user.createTime }}</a>
     </div>
 
     <a class="updateuser" href="/updateuser">编辑</a>
@@ -50,6 +53,7 @@ const user = userInfostore()
   }
   button {
     background-color: black;
+    border: 3px solid white;
     color: white;
   }
   .updateuser {

@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import { useScroll } from '@vueuse/core'
-import { userInfostore } from '@/stores/userinfo.js'
-const user = userInfostore()
 const navurl = ref(location.pathname)
 const { y } = useScroll(window)
 const drawer = ref(false)
@@ -35,11 +33,9 @@ const direction = ref('ltr')
       </el-menu>
     </div>
     <a class="userinfo" href="/user">
-      <el-avatar v-if="user.userinfo" :src="user.userinfo.avatar" />
-      <div class="login" v-if="!user.userinfo">
+      <div class="login">
         <el-icon><UserFilled /></el-icon>
       </div>
-      <!-- <p>GEM</p> -->
     </a>
   </div>
   <el-drawer

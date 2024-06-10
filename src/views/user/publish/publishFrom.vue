@@ -37,7 +37,7 @@ const onSubmit = async () => {
     <el-form-item label="内容">
       <el-input
         v-model="article.content"
-        placeholder="写点什么好呢？"
+        placeholder="想要写点什么好呢？"
         type="textarea"
       />
     </el-form-item>
@@ -75,12 +75,11 @@ const onSubmit = async () => {
           </div>
         </template>
       </el-upload>
-
       <el-dialog v-model="dialogVisible">
         <img w-full :src="dialogImageUrl" alt="Preview Image" />
       </el-dialog>
     </el-form-item>
-    <el-form-item label="分类">
+    <el-form-item label="选择分类">
       <el-switch
         v-model="article.classification"
         class="ml-2"

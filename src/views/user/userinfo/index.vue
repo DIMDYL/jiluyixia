@@ -15,8 +15,8 @@ import userInfo from './userInfo.vue'
   height: 100vh;
   margin-top: -77px;
   justify-content: center;
-  background-image: url('@/assets/userinfo.jpg');
-  background-size: auto 100%;
+  background-image: url('@/assets/bg1.jpg');
+  background-size: 100% 100%;
   align-items: center;
   .userinfobox {
     display: flex;

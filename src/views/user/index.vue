@@ -56,15 +56,10 @@ const off = () => {
   <div class="user">
     <userNavPanel />
     <div class="usercontent">
-      <!-- <div class="userleftnav">
-        <el-avatar
-          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-        />
-        <userNav />
-      </div> -->
-      <div class="right">
-        <RouterView />
-      </div>
+      <RouterView />
+    </div>
+    <div class="fooder">
+      <p>@DIM</p>
     </div>
   </div>
 </template>
@@ -72,6 +67,13 @@ const off = () => {
 .user {
   width: 100%;
   margin-top: 70px;
+  .fooder {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .usercontent {
     display: flex;
     .userleftnav {

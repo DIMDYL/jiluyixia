@@ -32,7 +32,8 @@ export const userInfostore = defineStore(
   },
   {
     persist: {
-      key: 'userinfo'
+      key: 'userinfo',
+      paths: ['token', 'dialogVisible']
     }
   }
 )
